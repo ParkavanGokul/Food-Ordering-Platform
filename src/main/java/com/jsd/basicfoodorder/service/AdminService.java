@@ -2,11 +2,14 @@ package com.jsd.basicfoodorder.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.jsd.basicfoodorder.entity.Admin;
 import com.jsd.basicfoodorder.entity.Customer;
 import com.jsd.basicfoodorder.entity.Food;
 import com.jsd.basicfoodorder.entity.Order;
 
+@Component
 public interface AdminService {
 	
     Admin addAdmin(Admin admin);											//Admin's actions on Admin entity

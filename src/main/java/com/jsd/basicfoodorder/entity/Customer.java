@@ -9,17 +9,17 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
-    @Column
+    @Column(nullable = false, length = 24)
     private String name;
-    @Column
+    @Column(nullable = false, length = 16)
     private String mobileNumber;
-    @Column
+    @Column(nullable = false, length = 32)
     private String password;
-    @Column
+    @Column(nullable = false, length = 250)
     private String address;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<Order> order;
     
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Cart cart;
@@ -27,7 +27,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Food> foods;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
     private Admin admin;
     
@@ -65,11 +65,11 @@ public class Customer {
 	}
 
 	public List<Order> getOrders() {
-		return orders;
+		return order;
 	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setOrders(List<Order> order) {
+		this.order = order;
 	}
 
 	public Cart getCart() {
@@ -100,14 +100,14 @@ public class Customer {
 		return customerId;
 	}
 																													//Constructors
-	public Customer(String name, String mobileNumber, String password, String address, List<Order> orders, Cart cart,
+	public Customer(String name, String mobileNumber, String password, String address, List<Order> order, Cart cart,
 			List<Food> foods, Admin admin) {
 		super();
 		this.name = name;
 		this.mobileNumber = mobileNumber;
 		this.password = password;
 		this.address = address;
-		this.orders = orders;
+		this.order = order;
 		this.cart = cart;
 		this.foods = foods;
 		this.admin = admin;

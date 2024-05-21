@@ -10,15 +10,15 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodId;
-    @Column
+    @Column(nullable = false, length = 24)
     private String name;
-    @Column
+    @Column(nullable = false)
     private double price;
     
     @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
     private List<FoodItem> foodItems;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
     private Admin admin;
     

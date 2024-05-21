@@ -92,8 +92,8 @@ public class AdminController {
 
     @GetMapping("/getAllOrders")
     public ResponseEntity<List<Order>> getAllOrders() {
-        List<Order> orders = adminService.getAllOrders();
-        return ResponseEntity.ok(orders);
+        List<Order> order = adminService.getAllOrders();
+        return ResponseEntity.ok(order);
     }
 
     @GetMapping("/getOrder/{orderId}")

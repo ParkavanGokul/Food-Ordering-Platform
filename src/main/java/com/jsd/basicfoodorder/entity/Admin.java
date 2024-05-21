@@ -9,9 +9,9 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
-    @Column
+    @Column(nullable = false, length = 24)
     private String username;
-    @Column
+    @Column(nullable = false, length = 32)
     private String password;
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)

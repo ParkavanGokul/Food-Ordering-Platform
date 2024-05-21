@@ -4,11 +4,14 @@ import java.util.List;
 //import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.jsd.basicfoodorder.entity.Cart;
 import com.jsd.basicfoodorder.entity.Customer;
 import com.jsd.basicfoodorder.entity.Food;
 import com.jsd.basicfoodorder.entity.Order;
 
+@Component
 public interface CustomerService {
 																							//Customer actions on Customer entity
     Customer addCustomer(Customer customer);
@@ -22,7 +25,7 @@ public interface CustomerService {
     
     																						//Customer actions on Cart entity
     Cart addFoodToCart(Long customerId, Long foodId, int quantity);							//need review.Changed from void to Cart type
-    List<Food> getAllFoodsInCart(Long customerId);												//need review.Changed from void to Cart type
+    List<Food> getAllFoodsInCart(Long customerId);								
 //void setQuantityOfEachFoods(Long customerId, int foodQuantity);
     void removeFoodFromCart(Long customerId, Long foodId);
     																						//Customer actions on Order entity

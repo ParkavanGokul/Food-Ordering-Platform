@@ -5,16 +5,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "`Order`")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-    @Column
+    @Column(nullable = false)
     private LocalDateTime dateTime;
-    @Column
+    @Column(nullable = false, length = 24)
     private String status;
-    @Column
+    @Column(nullable = false)
     private double totalPrice;
 
     @ManyToOne
@@ -84,7 +85,6 @@ public class Order {
 
 	public Order() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Order(LocalDateTime dateTime, String status, double totalPrice, Customer customer, List<Food> foods,
